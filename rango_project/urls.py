@@ -8,15 +8,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', include('rango.urls')),
     url(r'^rango/', include('rango.urls')),
+    
 )
 
-if settings.DEBUG:
-    urlpatterns += patterns(
-        'django.views.static',
-        (r'^media/(?P<path>.*)',
-            'server',
-            {'document_root': settings.MEDIA_ROOT}
-        ),
-    )
-        
