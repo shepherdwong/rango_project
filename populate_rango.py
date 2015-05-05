@@ -6,6 +6,12 @@ django.setup()
 
 from rango.models import Category, Page
 
+# Delete existing categories and pages.
+for c in Category.objects.all() :
+    for p in Page.objects.filter(category=c) :
+        p.delete()
+    c.delete()
+        
 def populate():
     python_cat = add_cat('Python',
         views = 128,
@@ -39,7 +45,7 @@ def populate():
         title="How to Tango with Django",
         url="http://www.tangowithdjango.com/")
 
-    frame_cat = add_cat("Other Frameworks",
+    python_cat = add_cat("Other Frameworks",
         views = 32,
         likes = 16)
     
@@ -53,7 +59,7 @@ def populate():
         
     # Print out what we have added to the user.
     for c in Category.objects.all() :
-        for p in Page.Objects.filter(category=c) :
+        for p in Page.objects.filter(category=c) :
             print "- {0} - {1}".format(str(c), str(p))
             
 def add_page(cat, title, url, views=0) :
