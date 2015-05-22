@@ -11,14 +11,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='page',
-            name='category',
-        ),
-        migrations.DeleteModel(
-            name='Category',
-        ),
-        migrations.DeleteModel(
-            name='Page',
+        migrations.AlterField(
+            model_name='category',
+            name='slug',
+            field=models.SlugField(unique=True),
         ),
     ]
